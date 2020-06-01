@@ -33,6 +33,8 @@ class App extends Component {
   // RENDERER ------------------------------------------------------------------------
   render() {
     const styleBtn = {
+      backgroundColor: 'green',
+      color: 'white',
       padding: '8px',
       cursor: 'pointer',
     };
@@ -42,9 +44,11 @@ class App extends Component {
       persons = (
       <div>
         <Person name={this.state.names[0]} click={() => this.nickNameHandler('Vishal(refPass)')} changed={this.changeNameHandler} />
-        <button style={styleBtn} onClick={this.nickNameHandler.bind(this, 'Vishal(buttonPass)')}>Show Nick NAME</button>
+        <button onClick={this.nickNameHandler.bind(this, 'Vishal(buttonPass)')}>Show Nick NAME</button>
         <Person name={this.state.names[1]}>----</Person>
       </div>);
+
+      styleBtn.backgroundColor = 'red';
     };
 
     // RETURN ------------------------------------------------------------------------
@@ -52,7 +56,7 @@ class App extends Component {
       <div className="App">
         <h1>List of Persons:-</h1>
         <button style={styleBtn} onClick={this.togglePersonHandler} >Toggle Viewer</button>
-        { persons }
+          { persons }
       </div>
     );
   }
