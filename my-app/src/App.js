@@ -6,20 +6,29 @@ import Person from './Person/Person.js';
 class App extends Component {
   // STATES ------------------------------------------------------------------------
   state = {
-    names: ['Prashanth', 'Abhishek'],
+    persons: [
+      {name: 'Prashanth'},
+      {name: 'Abhishek'},
+    ],
     showPerson: false
   }
   
   // FUNCTIONS ------------------------------------------------------------------------
   nickNameHandler = (nickname) => {
     this.setState({
-      names: [nickname, 'Abhishek']
+      persons: [
+        {name: nickname},
+        {name: 'Abhishek'},
+      ],
     })
   }
 
   changeNameHandler = (event) => {
     this.setState({
-      names: [event.target.value, 'Abhishek']
+      persons: [
+        {name: event.target.value},
+        {name: 'Abhishek'},
+      ],
     })
   }
 
@@ -43,9 +52,9 @@ class App extends Component {
     if(this.state.showPerson) {
       persons = (
       <div>
-        <Person name={this.state.names[0]} click={() => this.nickNameHandler('Vishal(refPass)')} changed={this.changeNameHandler} />
+        <Person name={this.state.persons[0].name} click={() => this.nickNameHandler('Vishal(refPass)')} changed={this.changeNameHandler} />
         <button onClick={this.nickNameHandler.bind(this, 'Vishal(buttonPass)')}>Show Nick NAME</button>
-        <Person name={this.state.names[1]}>----</Person>
+        <Person name={this.state.persons[1].name}>----</Person>
       </div>);
 
       styleBtn.backgroundColor = 'red';
@@ -63,34 +72,3 @@ class App extends Component {
 }
 
 export default App;
-
-/*
-# FUNCTIONAL BASED COMPONENTS
-import React, { useState } from 'react';
-import './App.css';
-import Person from './Person/Person';
-
-const app = (props) => {
-  # WE CAN DEFINE UNLIMITED 'useState()'
-  const [currPersonState, setPersonState] = useState(
-    {
-      name: ['Prashanth', 'Abhishek']
-    }
-  )
-  let changeNameHandler = () => {
-    // Don't mutate state directly
-    setPersonState({
-      name: []
-    })
-  }
-  return (
-    <div className="App">
-      <h1>List of Persons:-</h1>
-      <button onClick={changeNameHandler}>Switch NAME</button>
-      <Person name={currPersonState.name[0]} />
-      <Person name={currPersonState.name[1]}>Brother</Person>
-    </div>
-  );
-}
-export default app;
-*/
