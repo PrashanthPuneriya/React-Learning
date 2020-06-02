@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from '../components/Persons/Person/Person.js';
+import Persons from '../components/Persons/Persons.js';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 // # Class Based Components
 class App extends Component {
@@ -51,31 +52,17 @@ class App extends Component {
       padding: '8px',
       cursor: 'pointer',
     };
-
     let persons = null;
     if(this.state.showPerson) {
       persons = (
-      <div>
-        {
-          this.state.persons.map((person, index) => {
-              return (
-                <Person 
-                  key={person.id}
-                  name={person.name} 
-                  clicked={() => this.deletePersonHandler(index)}
-                  changed={(event) => this.changeNameHandler(event, person.id)} />
-              );
-          })
-        }
-      </div>
+        <Persons persons={this.state.persons} clicked={this.deletePersonHandler} changed={this.changeNameHandler} />
       );
       styleBtn.backgroundColor = 'red';
     };
 
     return (
       <div className="App">
-        <h1>Persons Manager:-</h1>
-        <button style={styleBtn} onClick={this.togglePersonHandler}>Toggle Viewer</button>
+          <Cockpit clicked={this.togglePersonHandler}/>
           { persons }
       </div>
     );

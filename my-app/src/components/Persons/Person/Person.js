@@ -1,6 +1,7 @@
 import React from 'react';
 import './Person.css';
 
+// In real-time this file is used to create a card for each person
 const person = (props) => {
     return (
         <div className="Person">
