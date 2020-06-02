@@ -1,6 +1,6 @@
-#React-Learning
+# React-Learning
 
-##This branch contains code which demonstrates:-
+## This branch contains code which demonstrates:-
 
 1. basic-syntax
 2. components
